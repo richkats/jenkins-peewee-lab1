@@ -5,10 +5,13 @@ from prettytable import PrettyTable
 from random import randint, choice
 from faker import Faker
 
-db = pw.SqliteDatabase('orders.db')
+
+db_file = 'orders.db'
+db = pw.SqliteDatabase(db_file)
 
 fake = Faker('ru_RU')
 Faker.seed(randint(100, 999))
+
 
 class Clients(pw.Model):
     client_id = pw.PrimaryKeyField()
@@ -37,7 +40,8 @@ def create_tables():
 
 
 def help():
-    print("Допустимые параметры:\n\tinit -- инициализировать таблицы.\n\tfill -- заполнить таблицы рандомными значениями.\n\tshow [table_name] -- вывести значение таблицы table_name.\n")
+    print("Допустимые параметры:\n\tinit -- инициализировать таблицы.\n\tfill -- заполнить таблицы рандомными "
+          "значениями.\n\tshow [table_name] -- вывести значение таблицы table_name.\n")
 
 
 def init():
@@ -52,7 +56,8 @@ def fill():
         client = Clients.create(name=fake.name(), city=fake.city(), address=fake.address())
     db.commit()
     for _ in range(10):
-        order = Orders.create(client=Clients.get_by_id(randint(1,10)), date=fake.date(), amount=randint(1,20), description=fake.paragraph(nb_sentences=randint(2, 5)))
+        order = Orders.create(client=Clients.get_by_id(randint(1,10)), date=fake.date(), amount=randint(1,20),
+                              description=fake.paragraph(nb_sentences=randint(2, 5)))
     db.commit()
 
 
