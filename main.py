@@ -12,7 +12,7 @@ Faker.seed(randint(100, 999))
 
 # test
 class Clients(pw.Model):
-    client_id = pw.PrimaryKeyField()
+    #client_id = pw.PrimaryKeyField()
     name = pw.CharField()
     city = pw.CharField()
     address = pw.CharField()
