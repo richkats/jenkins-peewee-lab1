@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+    options {
+        timestamps()
+    }
+
+    stages {
+
+        stage("install libs") {
+            steps {
+                sh 'python3 -m pip install -r requirements.txt'
+                echo 'libs installed'
+            }
+        }
+
+        stage("testing") {
+            steps {
+                sh 'pytest test.py --junitxml=report/out_report.xml'
+                echo 'tests passed'
+            }
+        }
+
+        stage("deploying") {
+            steps {
+                sh 'python3 main.py show clients'
+
+                echo 'app is deployed'
+            }
+        }
+    }
+}
