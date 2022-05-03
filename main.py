@@ -10,8 +10,6 @@ db = pw.SqliteDatabase(db_file)
 fake = Faker('ru_RU')
 Faker.seed(randint(100, 999))
 
-# a comment to test commit
-
 class Clients(pw.Model):
     client_id = pw.PrimaryKeyField()
     name = pw.CharField()
