@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 import sys
 import peewee as pw
-from random import randint, choice
+from random import randint
 from faker import Faker
-# test comment
 
 db_file = 'orders.db'
 db = pw.SqliteDatabase(db_file)
