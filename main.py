@@ -31,7 +31,7 @@ class Orders(pw.Model):
     class Meta:
         database = db
 
-# test 2
+# test 3
 
 def create_tables():
     with db:
