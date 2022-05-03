@@ -30,4 +30,8 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            junit 'report/out_report.xml'
+        }
 }
