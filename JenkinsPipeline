@@ -22,7 +22,9 @@ pipeline {
 
         stage("deploying") {
             steps {
+                sh 'python3 main.py fill'
                 sh 'python3 main.py show clients'
+                sh 'python3 main.py show orders'
 
                 echo 'app is deployed'
             }
