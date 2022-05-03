@@ -3,7 +3,7 @@ import sys
 import peewee as pw
 from random import randint, choice
 from faker import Faker
-
+# test comment
 
 db_file = 'orders.db'
 db = pw.SqliteDatabase(db_file)
